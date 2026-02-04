@@ -1,0 +1,44 @@
+from playwright.sync_api import sync_playwright
+import pandas as pd
+
+def scrape_jobs():
+    with sync_playwright() as p:
+
+        browser = p.chromium.launch(headless=False)
+        context = browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        )
+        
+        page = context.new_page()
+        page.goto("https://remoteok.com/remote-python-jobs")
+
+        page.wait_for_selector('tr.job')
+
+        job_rows = page.locator("tr.job").all()
+
+        jobs_data = []
+
+        for job in job_rows:
+            try:
+                company_name = job.locator('h3[itemprop="name"]').inner_text().strip()
+                job_title = job.locator('a[itemprop="url"]').inner_text()
+
+                jobs_data.append({
+                    'job_title' : job_title,
+                    'company_name' : company_name
+                })
+
+            except Exception as e:
+                print(f'cant try this block due to {e}')
+
+        
+        # print(jobs_data)
+
+        df = pd.DataFrame(jobs_data)
+        df.to_csv('remotejobs.csv', index = False)
+        
+        
+        browser.close()
+
+if __name__ == "__main__":
+    scrape_jobs()

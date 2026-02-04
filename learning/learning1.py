@@ -23,9 +23,6 @@ def run():
             text = item.inner_text()
             link = item.get_attribute('href')
             print(f'{i}: {text} ')
-
-
-    
         
         browser.close()
 
