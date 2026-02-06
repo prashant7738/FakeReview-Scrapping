@@ -4,6 +4,7 @@ from datetime import datetime
 import time
 import random
 
+url = "https://www.daraz.com.np/products/stainless-steel-cordless-electric-jug-18-ltr-1500-watts-i502504267-s2250144682.html?pvid=b154de8a-7dd4-455a-88d9-1cfa01dc25be&search=jfy&scm=1007.51705.413671.0&spm=a2a0e.tm80335409.just4u.d_502504267"
 def get_star(data):
     # More specific: count filled star paths within the rating structure
     filled_stars = data.locator('.i-rate-star .i-rate-star-item svg path[style*="fill: rgb(255, 200, 60);"]').count()
@@ -31,8 +32,7 @@ def daraz_scrapper():
         """)
 
         page = context.new_page()
-        page.goto("https://www.daraz.com.np/products/aluminium-alloy-metal-adjustable-laptop-stand-for-10-to-17-inches-mackbooklaptopstab-i105711486-s2280473603.html?c=&channelLpJumpArgs=&clickTrackInfo=query%253Alaptop%252Bstand%253Bnid%253A105711486%253Bsrc%253ALazadaMainSrp%253Brn%253A8a8454919c1f5ac0e342432a064b4bb5%253Bregion%253Anp%253Bsku%253A105711486_NP%253Bprice%253A499%253Bclient%253Amobile%253Bsupplier_id%253A900152409121%253Bsession_id%253A%253Bbiz_source%253Ah5_external%253Bslot%253A1%253Butlog_bucket_id%253A470687%253Basc_category_id%253A99%253Bitem_id%253A105711486%253Bsku_id%253A2280473603%253Bshop_id%253A47403%253BtemplateInfo%253A&freeshipping=0&fs_ab=1&fuse_fs=&lang=en&location=Bagmati%20Province&price=499&priceCompare=skuId%3A2280473603%3Bsource%3Alazada-search-voucher%3Bsn%3A8a8454919c1f5ac0e342432a064b4bb5%3BunionTrace%3A2102eca017703729339531727e8714%3BoriginPrice%3A49900%3BsubsidyPrice%3A49900%3BshopPrice%3A49900%3BvoucherPrice%3A49900%3BdisplayPrice%3A49900%3BsinglePromotionId%3A50000034846001%3BsingleToolCode%3ApromPrice%3BvoucherPricePlugin%3A1%3BbuyerId%3A0%3BnewBuyer%3Afalse%3Btimestamp%3A1770372934173%3BisPreHeat%3Afalse%3BitemType%3A0&ratingscore=4.456768558951965&request_id=8a8454919c1f5ac0e342432a064b4bb5&review=1145&sale=5056&search=1&source=search&spm=a2a0e.searchlist.list.1&stock=1")
-
+        page.goto(url=url)
         reviews_data = []
 
         try:

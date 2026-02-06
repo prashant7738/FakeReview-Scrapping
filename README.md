@@ -30,13 +30,13 @@ playwright install chromium
 ```bash
 python darazreviewscrapper.py
 ```
-3. Reviews will be saved to `darazreviews.csv`
+3. Reviews will be saved to `darazreviewdataset.csv`
 
 ## Output Format
 
-| review | scrapped_date |
-|--------|--------------|
-| Review text | 2024-01-15 10:30:45 |
+|review|review_date|review_star
+|--------|--------------|--------|
+| Review text | 2 Feb 2024 | 5.0 |
 
 ## Notes
 
